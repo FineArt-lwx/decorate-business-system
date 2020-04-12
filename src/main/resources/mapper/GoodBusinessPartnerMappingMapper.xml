@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.GoodBusinessPartnerMappingMapper">
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.GoodBusinessPartnerMapping">
+    <!--@mbg.generated-->
+    <!--@Table good_business_partner_mapping-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="business_partner_id" jdbcType="INTEGER" property="businessPartnerId" />
+    <result column="good_id" jdbcType="INTEGER" property="goodId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, business_partner_id, good_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from good_business_partner_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from good_business_partner_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.GoodBusinessPartnerMapping" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into good_business_partner_mapping (business_partner_id, good_id)
+    values (#{businessPartnerId,jdbcType=INTEGER}, #{goodId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.GoodBusinessPartnerMapping" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into good_business_partner_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="businessPartnerId != null">
+        business_partner_id,
+      </if>
+      <if test="goodId != null">
+        good_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="businessPartnerId != null">
+        #{businessPartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null">
+        #{goodId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.GoodBusinessPartnerMapping">
+    <!--@mbg.generated-->
+    update good_business_partner_mapping
+    <set>
+      <if test="businessPartnerId != null">
+        business_partner_id = #{businessPartnerId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.GoodBusinessPartnerMapping">
+    <!--@mbg.generated-->
+    update good_business_partner_mapping
+    set business_partner_id = #{businessPartnerId,jdbcType=INTEGER},
+      good_id = #{goodId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

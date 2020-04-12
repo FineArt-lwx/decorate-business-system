@@ -1,18 +1,21 @@
 package com.finearter.dbs.mapper;
 
+import com.finearter.dbs.model.entity.User;
+import org.apache.ibatis.annotations.Mapper;import java.util.List;
 
-import com.finearter.dbs.domain.User;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
-/**
- * @author lwx
- */
-@Repository
+@Mapper
 public interface UserMapper {
+    int deleteByPrimaryKey(Integer id);
 
+    int insert(User record);
 
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 
     List<User> selectAllUsers();
 }

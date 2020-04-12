@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.Customer">
+    <!--@mbg.generated-->
+    <!--@Table customer-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_sex" jdbcType="VARCHAR" property="customerSex" />
+    <result column="customer_id_num" jdbcType="VARCHAR" property="customerIdNum" />
+    <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+    <result column="employee_id" jdbcType="INTEGER" property="employeeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, phone_num, customer_name, customer_sex, customer_id_num, customer_address, employee_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from customer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.finearter.dbs.model.entity.Customer">
+    <!--@mbg.generated-->
+    insert into customer (id, phone_num, customer_name, 
+      customer_sex, customer_id_num, customer_address, 
+      employee_id)
+    values (#{id,jdbcType=INTEGER}, #{phoneNum,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerSex,jdbcType=VARCHAR}, #{customerIdNum,jdbcType=VARCHAR}, #{customerAddress,jdbcType=VARCHAR}, 
+      #{employeeId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.finearter.dbs.model.entity.Customer">
+    <!--@mbg.generated-->
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerSex != null">
+        customer_sex,
+      </if>
+      <if test="customerIdNum != null">
+        customer_id_num,
+      </if>
+      <if test="customerAddress != null">
+        customer_address,
+      </if>
+      <if test="employeeId != null">
+        employee_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null">
+        #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdNum != null">
+        #{customerIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.Customer">
+    <!--@mbg.generated-->
+    update customer
+    <set>
+      <if test="phoneNum != null">
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSex != null">
+        customer_sex = #{customerSex,jdbcType=VARCHAR},
+      </if>
+      <if test="customerIdNum != null">
+        customer_id_num = #{customerIdNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null">
+        employee_id = #{employeeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.Customer">
+    <!--@mbg.generated-->
+    update customer
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_sex = #{customerSex,jdbcType=VARCHAR},
+      customer_id_num = #{customerIdNum,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      employee_id = #{employeeId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <resultMap id="customerResultMap" type="com.finearter.dbs.model.entity.Customer">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+        <result column="customer_sex" jdbcType="VARCHAR" property="customerSex" />
+        <result column="customer_id_num" jdbcType="VARCHAR" property="customerIdNum" />
+        <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+
+        <association javaType="com.finearter.dbs.model.entity.User" property="dockPeoper">
+            
+
+            <id column="id" property="id" />
+            <result column="username" property="username" />
+            <result column="address" property="address" />
+
+        </association>
+
+    </resultMap>
+    <sql id="customer_Column_List">
+        id,phone_num,customer_name,customer_sex,customer_id_num,customer_address,employee_id
+    </sql>
+
+
+    <select id="selectAllCustomers" resultMap="userResultMap">
+        select
+        <include refid="customer_Column_List" />
+        from t_customer as t where 1=1
+    </select>
+
+
+    <!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
+    <!--        select-->
+    <!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+    <!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->
+    <!--            &amp;amp;lt;foreach collection="properties" item="item" open="," separator="+" close="as keyweight"&amp;amp;gt;-->
+    <!--                (IF(CONCAT_WS('', indicator_name, indicator_definition,label) LIKE '%${item}%', 1, 0))-->
+    <!--            &amp;amp;lt;/foreach&amp;amp;gt;-->
+    <!--        &amp;amp;lt;/if&amp;amp;gt;-->
+    <!--        from t_indicator-->
+    <!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->
+    <!--            WHERE-->
+    <!--            CONCAT_WS('',indicator_name, indicator_definition,label)-->
+    <!--            regexp-->
+    <!--            replace(&amp;amp;lt;foreach collection="properties" open="'" item="iter" separator="|" close="'"&amp;amp;gt;${iter}&amp;amp;lt;/foreach&amp;amp;gt;,' ','')-->
+    <!--            ORDER BY keyweight DESC-->
+    <!--        &amp;amp;lt;/if&amp;amp;gt;-->
+    <!--        &amp;amp;lt;if test="properties==null || properties.length==0"&amp;amp;gt;-->
+    <!--            ORDER by id desc-->
+    <!--        &amp;amp;lt;/if&amp;amp;gt;-->
+    <!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+
+    <!--    &amp;amp;lt;select id="selectById" resultMap="indicatorResultMap" parameterType="Integer" &amp;amp;gt;-->
+    <!--        select-->
+    <!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+    <!--        from t_indicator-->
+    <!--        where id=${id}-->
+    <!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+    <!--    &amp;amp;lt;delete id="deleteById" parameterType="Integer"&amp;amp;gt;-->
+    <!--        delete from t_indicator where id=${id}-->
+    <!--    &amp;amp;lt;/delete&amp;amp;gt;-->
+
+    <!--    &amp;amp;lt;insert id="insertIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;gt;-->
+    <!--        insert into t_indicator(indicator_name, indicator_definition, label) values (#{indicatorName},#{indicatorDefinition},#{label})-->
+    <!--    &amp;amp;lt;/insert&amp;amp;gt;-->
+
+    <!--    &amp;amp;lt;select id="selectByIndicatorName" parameterType="String" resultMap="indicatorResultMap"&amp;amp;gt;-->
+    <!--        select-->
+    <!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
+    <!--        from t_indicator-->
+    <!--        where indicator_name=#{indicatorName}-->
+    <!--    &amp;amp;lt;/select&amp;amp;gt;-->
+
+    <!--    &amp;amp;lt;update id="updateIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;gt;-->
+    <!--        update t_indicator set indicator_name=#{indicatorName},indicator_definition=#{indicatorDefinition},label=#{label} where id=#{id}-->
+    <!--    &amp;amp;lt;/update&amp;amp;gt;-->
+</mapper>

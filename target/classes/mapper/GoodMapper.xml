@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.GoodMapper">
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.Good">
+    <!--@mbg.generated-->
+    <!--@Table good-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="brand" jdbcType="VARCHAR" property="brand" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="usage" jdbcType="VARCHAR" property="usage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, brand, `type`, price, `size`, model, `usage`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from good
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from good
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.finearter.dbs.model.entity.Good">
+    <!--@mbg.generated-->
+    insert into good (id, `name`, brand, 
+      `type`, price, `size`, 
+      model, `usage`)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{size,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{usage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.finearter.dbs.model.entity.Good">
+    <!--@mbg.generated-->
+    insert into good
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="brand != null">
+        brand,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="usage != null">
+        `usage`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null">
+        #{usage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.Good">
+    <!--@mbg.generated-->
+    update good
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        brand = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null">
+        `usage` = #{usage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.Good">
+    <!--@mbg.generated-->
+    update good
+    set `name` = #{name,jdbcType=VARCHAR},
+      brand = #{brand,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      `size` = #{size,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      `usage` = #{usage,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.ProjectMapper">
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.Project">
+    <!--@mbg.generated-->
+    <!--@Table project-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="house_id" jdbcType="INTEGER" property="houseId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="decorate_id" jdbcType="INTEGER" property="decorateId" />
+    <result column="principal_id" jdbcType="INTEGER" property="principalId" />
+    <result column="project_cycle" jdbcType="VARCHAR" property="projectCycle" />
+    <result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="expect_end_date" jdbcType="TIMESTAMP" property="expectEndDate" />
+    <result column="float_date_declare" jdbcType="VARCHAR" property="floatDateDeclare" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, house_id, customer_id, decorate_id, principal_id, project_cycle, start_date, 
+    expect_end_date, float_date_declare
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.Project" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project (house_id, customer_id, decorate_id, 
+      principal_id, project_cycle, start_date, 
+      expect_end_date, float_date_declare)
+    values (#{houseId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{decorateId,jdbcType=INTEGER}, 
+      #{principalId,jdbcType=INTEGER}, #{projectCycle,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{expectEndDate,jdbcType=TIMESTAMP}, #{floatDateDeclare,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.Project" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="houseId != null">
+        house_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="decorateId != null">
+        decorate_id,
+      </if>
+      <if test="principalId != null">
+        principal_id,
+      </if>
+      <if test="projectCycle != null">
+        project_cycle,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="expectEndDate != null">
+        expect_end_date,
+      </if>
+      <if test="floatDateDeclare != null">
+        float_date_declare,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="houseId != null">
+        #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="decorateId != null">
+        #{decorateId,jdbcType=INTEGER},
+      </if>
+      <if test="principalId != null">
+        #{principalId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCycle != null">
+        #{projectCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expectEndDate != null">
+        #{expectEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floatDateDeclare != null">
+        #{floatDateDeclare,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.Project">
+    <!--@mbg.generated-->
+    update project
+    <set>
+      <if test="houseId != null">
+        house_id = #{houseId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="decorateId != null">
+        decorate_id = #{decorateId,jdbcType=INTEGER},
+      </if>
+      <if test="principalId != null">
+        principal_id = #{principalId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCycle != null">
+        project_cycle = #{projectCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expectEndDate != null">
+        expect_end_date = #{expectEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floatDateDeclare != null">
+        float_date_declare = #{floatDateDeclare,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.Project">
+    <!--@mbg.generated-->
+    update project
+    set house_id = #{houseId,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      decorate_id = #{decorateId,jdbcType=INTEGER},
+      principal_id = #{principalId,jdbcType=INTEGER},
+      project_cycle = #{projectCycle,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      expect_end_date = #{expectEndDate,jdbcType=TIMESTAMP},
+      float_date_declare = #{floatDateDeclare,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

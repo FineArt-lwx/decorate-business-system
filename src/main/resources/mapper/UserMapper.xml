@@ -1,74 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.finearter.dbs.mapper.UserMapper">
-    <resultMap id="userResultMap" type="com.finearter.dbs.domain.User">
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="sex" jdbcType="VARCHAR" property="sex"/>
-        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum"/>
-        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.User">
+    <!--@mbg.generated-->
+    <!--@Table `user`-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="job_id" jdbcType="INTEGER" property="jobId" />
+    <result column="superior_id" jdbcType="INTEGER" property="superiorId" />
+    <result column="work_num" jdbcType="VARCHAR" property="workNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, sex, phone_num, role_id, email, `password`, id_number, dept_id, job_id, 
+    superior_id, work_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `user`
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `user`
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user` (`name`, sex, phone_num, 
+      role_id, email, `password`, 
+      id_number, dept_id, job_id, 
+      superior_id, work_num)
+    values (#{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{idNumber,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{jobId,jdbcType=INTEGER}, 
+      #{superiorId,jdbcType=INTEGER}, #{workNum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="superiorId != null">
+        superior_id,
+      </if>
+      <if test="workNum != null">
+        work_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="superiorId != null">
+        #{superiorId,jdbcType=INTEGER},
+      </if>
+      <if test="workNum != null">
+        #{workNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.User">
+    <!--@mbg.generated-->
+    update `user`
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null">
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="superiorId != null">
+        superior_id = #{superiorId,jdbcType=INTEGER},
+      </if>
+      <if test="workNum != null">
+        work_num = #{workNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.User">
+    <!--@mbg.generated-->
+    update `user`
+    set `name` = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      job_id = #{jobId,jdbcType=INTEGER},
+      superior_id = #{superiorId,jdbcType=INTEGER},
+      work_num = #{workNum,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <resultMap id="userResultMap" type="com.finearter.dbs.model.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+        <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+
+
+        <result column="id_num" jdbcType="VARCHAR" property="idNumber" />
+
     </resultMap>
     <sql id="user_Column_List">
         id,name,sex,phone_num,role_id,email,password
     </sql>
 
 
-        <select id="selectAllUsers" resultMap="userResultMap" >
+        <select id="selectAllUsers" resultMap="userResultMap">
             select
-            <include refid="user_Column_List"/>
-            from t_user as t where 1=1
+            <include refid="user_Column_List" />
+            from user as t where 1=1
         </select>
 
 
-<!--    <select id="selectAllIndicators" resultMap="indicatorResultMap">-->
+<!--    &amp;amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;amp;gt;-->
 <!--        select-->
-<!--        <include refid="Indicator_Column_List"/>-->
-<!--        <if test="properties!=null and properties.length!=0">-->
-<!--            <foreach collection="properties" item="item" open="," separator="+" close="as keyweight">-->
+<!--        &amp;amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;amp;gt;-->
+<!--        &amp;amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;amp;gt;-->
+<!--            &amp;amp;amp;lt;foreach collection="properties" item="item" open="," separator="+" close="as keyweight"&amp;amp;amp;gt;-->
 <!--                (IF(CONCAT_WS('', indicator_name, indicator_definition,label) LIKE '%${item}%', 1, 0))-->
-<!--            </foreach>-->
-<!--        </if>-->
+<!--            &amp;amp;amp;lt;/foreach&amp;amp;amp;gt;-->
+<!--        &amp;amp;amp;lt;/if&amp;amp;amp;gt;-->
 <!--        from t_indicator-->
-<!--        <if test="properties!=null and properties.length!=0">-->
+<!--        &amp;amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;amp;gt;-->
 <!--            WHERE-->
 <!--            CONCAT_WS('',indicator_name, indicator_definition,label)-->
 <!--            regexp-->
-<!--            replace(<foreach collection="properties" open="'" item="iter" separator="|" close="'">${iter}</foreach>,' ','')-->
+<!--            replace(&amp;amp;amp;lt;foreach collection="properties" open="'" item="iter" separator="|" close="'"&amp;amp;amp;gt;${iter}&amp;amp;amp;lt;/foreach&amp;amp;amp;gt;,' ','')-->
 <!--            ORDER BY keyweight DESC-->
-<!--        </if>-->
-<!--        <if test="properties==null || properties.length==0">-->
+<!--        &amp;amp;amp;lt;/if&amp;amp;amp;gt;-->
+<!--        &amp;amp;amp;lt;if test="properties==null || properties.length==0"&amp;amp;amp;gt;-->
 <!--            ORDER by id desc-->
-<!--        </if>-->
-<!--    </select>-->
+<!--        &amp;amp;amp;lt;/if&amp;amp;amp;gt;-->
+<!--    &amp;amp;amp;lt;/select&amp;amp;amp;gt;-->
 
 
 
 
-<!--    <select id="selectById" resultMap="indicatorResultMap" parameterType="Integer" >-->
+<!--    &amp;amp;amp;lt;select id="selectById" resultMap="indicatorResultMap" parameterType="Integer" &amp;amp;amp;gt;-->
 <!--        select-->
-<!--        <include refid="Indicator_Column_List"/>-->
+<!--        &amp;amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;amp;gt;-->
 <!--        from t_indicator-->
 <!--        where id=${id}-->
-<!--    </select>-->
+<!--    &amp;amp;amp;lt;/select&amp;amp;amp;gt;-->
 
-<!--    <delete id="deleteById" parameterType="Integer">-->
+<!--    &amp;amp;amp;lt;delete id="deleteById" parameterType="Integer"&amp;amp;amp;gt;-->
 <!--        delete from t_indicator where id=${id}-->
-<!--    </delete>-->
+<!--    &amp;amp;amp;lt;/delete&amp;amp;amp;gt;-->
 
-<!--    <insert id="insertIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator">-->
+<!--    &amp;amp;amp;lt;insert id="insertIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;amp;gt;-->
 <!--        insert into t_indicator(indicator_name, indicator_definition, label) values (#{indicatorName},#{indicatorDefinition},#{label})-->
-<!--    </insert>-->
+<!--    &amp;amp;amp;lt;/insert&amp;amp;amp;gt;-->
 
-<!--    <select id="selectByIndicatorName" parameterType="String" resultMap="indicatorResultMap">-->
+<!--    &amp;amp;amp;lt;select id="selectByIndicatorName" parameterType="String" resultMap="indicatorResultMap"&amp;amp;amp;gt;-->
 <!--        select-->
-<!--        <include refid="Indicator_Column_List"/>-->
+<!--        &amp;amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;amp;gt;-->
 <!--        from t_indicator-->
 <!--        where indicator_name=#{indicatorName}-->
-<!--    </select>-->
+<!--    &amp;amp;amp;lt;/select&amp;amp;amp;gt;-->
 
-<!--    <update id="updateIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator">-->
+<!--    &amp;amp;amp;lt;update id="updateIndicator" parameterType="com.tc108.indicatorsmanage.domain.Indicator"&amp;amp;amp;gt;-->
 <!--        update t_indicator set indicator_name=#{indicatorName},indicator_definition=#{indicatorDefinition},label=#{label} where id=#{id}-->
-<!--    </update>-->
+<!--    &amp;amp;amp;lt;/update&amp;amp;amp;gt;-->
 </mapper>

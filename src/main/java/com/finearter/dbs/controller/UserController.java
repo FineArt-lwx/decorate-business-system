@@ -1,7 +1,7 @@
 package com.finearter.dbs.controller;
 
 
-import com.finearter.dbs.domain.User;
+import com.finearter.dbs.model.entity.User;
 import com.finearter.dbs.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
