@@ -129,4 +129,20 @@
       house_state = #{houseState,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"></include>
+      from house
+      where 1=1
+      <if test="customerId != null">
+        and customer_id=#{customerId}
+      </if>
+      <if test="houseOwner != null and houseOwner != ''">
+        and house_owner like '%${houseOwner}%'
+      </if>
+      <if test="decorateStatus != null and decorateStatus != ''">
+        and decorate_status=#{decorateStatus}
+      </if>
+
+    </select>
 </mapper>

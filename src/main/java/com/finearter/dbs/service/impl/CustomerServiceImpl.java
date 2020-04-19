@@ -20,18 +20,29 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public ResultDto selectByName(String customerName) {
 
-        ArrayList<Customer> customers = customerMapper.selectByName(customerName);
+//        ArrayList<Customer> customers = customerMapper.selectByName(customerName);
 
+        Customer customer=new Customer();
+        customer.setCustomerName(customerName);
+        ArrayList<Customer> customers = customerMapper.selectByAnyCondition(customer);
         ResultDto resultDto = new ResultDto();
         resultDto.setData(customers);
+//        resultDto.setData(customers);
 
         return resultDto;
     }
 
     @Override
     public ResultDto selectAll() {
-        return null;
+        ArrayList<Customer> customers=customerMapper.selectByAnyCondition(new Customer());
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(customers);
+        return resultDto;
     }
+
+
+
 
 
     @Override

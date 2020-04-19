@@ -28,6 +28,10 @@ public class CustomerController {
     }
 
 
+    /**
+     * 查找所有客户
+     * @return
+     */
     @GetMapping("/selectAll")
     public ResultDto selectAll(){
         return customerService.selectAll();

@@ -1,5 +1,6 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.User;
 
 import java.util.List;
@@ -25,6 +26,10 @@ public interface UserService {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    ResultDto selectByPhoneNum(String phoneNum, String password);
+
+    ResultDto info(String phoneNum);
 }
 
 

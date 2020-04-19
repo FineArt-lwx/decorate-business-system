@@ -134,4 +134,18 @@
       `usage` = #{usage,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from
+      good
+      where 1=1
+      <if test="name != null and name != ''">
+        and name like '%${name}%'
+      </if>
+      <if test="brand != null and brand != ''">
+        and brand like '%${brand}%'
+      </if>
+      
+    </select>
 </mapper>

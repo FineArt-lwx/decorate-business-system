@@ -123,37 +123,21 @@
       employee_id = #{employeeId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <resultMap id="customerResultMap" type="com.finearter.dbs.model.entity.Customer">
-        <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
-        <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
-        <result column="customer_sex" jdbcType="VARCHAR" property="customerSex" />
-        <result column="customer_id_num" jdbcType="VARCHAR" property="customerIdNum" />
-        <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
-
-        <association javaType="com.finearter.dbs.model.entity.User" property="dockPeoper">
-            
-
-            <id column="id" property="id" />
-            <result column="username" property="username" />
-            <result column="address" property="address" />
-
-        </association>
-
-    </resultMap>
-    <sql id="customer_Column_List">
-        id,phone_num,customer_name,customer_sex,customer_id_num,customer_address,employee_id
-    </sql>
+  <select id="selectByAnyCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from customer
+    where 1=1
+    <if test="customerName != null and customerName != ''">
+      and customer_name like '%${customerName}%'
+    </if>
+    <if test="phoneNum != null and phoneNum != ''">
+      and phone_num=#{phoneNum}
+    </if>
+  </select>
 
 
-    <select id="selectAllCustomers" resultMap="userResultMap">
-        select
-        <include refid="customer_Column_List" />
-        from t_customer as t where 1=1
-    </select>
-
-
-    <!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
+  <!--    &amp;amp;lt;select id="selectAllIndicators" resultMap="indicatorResultMap"&amp;amp;gt;-->
     <!--        select-->
     <!--        &amp;amp;lt;include refid="Indicator_Column_List"/&amp;amp;gt;-->
     <!--        &amp;amp;lt;if test="properties!=null and properties.length!=0"&amp;amp;gt;-->

@@ -1,10 +1,13 @@
 package com.finearter.dbs.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import com.finearter.dbs.mapper.GoodMapper;
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.Good;
 import com.finearter.dbs.service.GoodService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class GoodServiceImpl implements GoodService {
@@ -40,6 +43,13 @@ public class GoodServiceImpl implements GoodService {
     @Override
     public int updateByPrimaryKey(Good record) {
         return goodMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public ResultDto selectAll() {
+
+        ArrayList<Good> goods= goodMapper.selectByAnyCondition(new Good());
+        return null;
     }
 
 }

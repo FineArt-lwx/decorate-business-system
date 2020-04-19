@@ -1,5 +1,6 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.Good;
 
 public interface GoodService {
@@ -16,6 +17,8 @@ public interface GoodService {
     int updateByPrimaryKeySelective(Good record);
 
     int updateByPrimaryKey(Good record);
+
+    ResultDto selectAll();
 
 }
 

@@ -1,14 +1,15 @@
 package com.finearter.dbs.controller;
 
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.User;
 import com.finearter.dbs.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @author lwx
  */
 @Slf4j
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
@@ -30,10 +31,32 @@ public class UserController {
     }
 
 
+    /**
+     * 登陆接口
+     * @param phoneNum
+     * @param password
+     * @return
+     */
+    @PostMapping("/login")
+    public ResultDto login(String phoneNum,String password){
+        return userService.selectByPhoneNum(phoneNum,password);
+    }
+
+
+
+    @GetMapping
+    public ResultDto info(String phoneNum){
+        return userService.info(phoneNum);
+    }
+
+
+    /**
+     * 查找所有用户
+     * @return
+     */
     @GetMapping("/all")
-    @ResponseBody
     public List<User> selectAllUsers(){
-        log.info("userController...");
+
         return  userService.selectAllUsers();
     }
 }

@@ -1,10 +1,14 @@
 package com.finearter.dbs.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import com.finearter.dbs.model.entity.House;
 import com.finearter.dbs.mapper.HouseMapper;
+import com.finearter.dbs.model.dto.ResultDto;
+import com.finearter.dbs.model.entity.House;
 import com.finearter.dbs.service.HouseService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+
 @Service
 public class HouseServiceImpl implements HouseService{
 
@@ -40,5 +44,16 @@ public class HouseServiceImpl implements HouseService{
     public int updateByPrimaryKey(House record) {
         return houseMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public ResultDto selectAll() {
+
+        ArrayList<House> houses=houseMapper.selectByAnyCondition(new House());
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(houses);
+        return resultDto;
+    }
+
+
 
 }

@@ -18,4 +18,4 @@ mybatis:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 logging:
   level:
-    com.tc108.indicatorsmanage.mapper: debug
+    com.finearter.dbs.mapper: debug

@@ -1,5 +1,6 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.House;
 public interface HouseService{
 
@@ -16,4 +17,5 @@ public interface HouseService{
 
     int updateByPrimaryKey(House record);
 
+    ResultDto selectAll();
 }

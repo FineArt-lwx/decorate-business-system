@@ -1,7 +1,9 @@
 package com.finearter.dbs.mapper;
 
 import com.finearter.dbs.model.entity.Customer;
-import org.apache.ibatis.annotations.Mapper;import java.util.ArrayList;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.ArrayList;
 
 @Mapper
 public interface CustomerMapper {
@@ -17,5 +19,6 @@ public interface CustomerMapper {
 
     int updateByPrimaryKey(Customer record);
 
-    ArrayList<Customer> selectByName(String customerName);
+
+    ArrayList<Customer> selectByAnyCondition(Customer customer);
 }
