@@ -1,6 +1,7 @@
 package com.finearter.dbs.controller;
 
 import com.finearter.dbs.model.dto.ResultDto;
+import com.finearter.dbs.model.entity.Customer;
 import com.finearter.dbs.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,17 @@ public class CustomerController {
     @GetMapping("/selectAll")
     public ResultDto selectAll(){
         return customerService.selectAll();
+    }
+
+
+    /**
+     *
+     * @param customer
+     * @return
+     */
+    @GetMapping("addCustomer")
+    public ResultDto addCustomer(Customer customer){
+        return customerService.addCustomer(customer);
     }
 
 }

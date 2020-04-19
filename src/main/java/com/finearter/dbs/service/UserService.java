@@ -3,8 +3,6 @@ package com.finearter.dbs.service;
 import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.User;
 
-import java.util.List;
-
 public interface UserService {
 
 
@@ -13,7 +11,7 @@ public interface UserService {
      *
      * @return
      */
-    List<User> selectAllUsers();
+    ResultDto selectAllUsers();
 
     int deleteByPrimaryKey(Integer id);
 

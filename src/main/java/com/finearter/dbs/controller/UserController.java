@@ -55,7 +55,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/all")
-    public List<User> selectAllUsers(){
+    public ResultDto selectAllUsers(){
 
         return  userService.selectAllUsers();
     }

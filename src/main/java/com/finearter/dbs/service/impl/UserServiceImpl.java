@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -47,8 +46,16 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public List<User> selectAllUsers() {
-        return userMapper.selectByAnyCondition(new User());
+    public ResultDto selectAllUsers() {
+        ArrayList<User> users = userMapper.selectByAnyCondition(new User());
+        ArrayList<UserDto> userDtos=new ArrayList<>();
+        for(User user:users){
+            UserDto userDto = userConvertUserDto(user);
+            userDtos.add(userDto);
+        }
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(userDtos);
+        return  resultDto;
     }
 
     @Override

@@ -20,6 +20,8 @@ public interface CustomerService {
     int updateByPrimaryKeySelective(Customer record);
 
     int updateByPrimaryKey(Customer record);
+
+    ResultDto addCustomer(Customer customer);
 }
 
 
