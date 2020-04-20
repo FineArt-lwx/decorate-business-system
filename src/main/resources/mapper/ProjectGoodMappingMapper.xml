@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.finearter.dbs.mapper.ProjectGoodMappingMapper">
+  <resultMap id="BaseResultMap" type="com.finearter.dbs.model.entity.ProjectGoodMapping">
+    <!--@mbg.generated-->
+    <!--@Table project_good_mapping-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="good_id" jdbcType="INTEGER" property="goodId" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, project_id, good_id, amount, unit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from project_good_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from project_good_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.ProjectGoodMapping" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project_good_mapping (project_id, good_id, amount, 
+      unit)
+    values (#{projectId,jdbcType=INTEGER}, #{goodId,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, 
+      #{unit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.ProjectGoodMapping" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into project_good_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="goodId != null">
+        good_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null">
+        #{goodId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.finearter.dbs.model.entity.ProjectGoodMapping">
+    <!--@mbg.generated-->
+    update project_good_mapping
+    <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="goodId != null">
+        good_id = #{goodId,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.finearter.dbs.model.entity.ProjectGoodMapping">
+    <!--@mbg.generated-->
+    update project_good_mapping
+    set project_id = #{projectId,jdbcType=INTEGER},
+      good_id = #{goodId,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DOUBLE},
+      unit = #{unit,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from project_good_mapping
+      where 1=1
+      <if test="goodId != null">
+        and good_id=#{goodId}
+      </if>
+      <if test="projectId">
+        and project_id=#{projectId}
+      </if>
+    </select>
+</mapper>
