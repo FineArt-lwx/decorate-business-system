@@ -1,7 +1,9 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.BusinessPartner;
-public interface BusinessPartnerService{
+
+public interface BusinessPartnerService {
 
 
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,6 @@ public interface BusinessPartnerService{
 
     int updateByPrimaryKey(BusinessPartner record);
 
+    ResultDto selectAll(Integer pageIndex, Integer pageSize);
 }
+

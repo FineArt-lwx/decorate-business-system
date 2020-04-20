@@ -11,7 +11,7 @@ public interface UserService {
      *
      * @return
      */
-    ResultDto selectAllUsers();
+    ResultDto selectAllUsers(Integer pageIndex,Integer pageSize);
 
     int deleteByPrimaryKey(Integer id);
 
@@ -28,6 +28,8 @@ public interface UserService {
     ResultDto selectByPhoneNum(String phoneNum, String password);
 
     ResultDto info(String phoneNum);
+
+    ResultDto addUser(User user);
 }
 
 

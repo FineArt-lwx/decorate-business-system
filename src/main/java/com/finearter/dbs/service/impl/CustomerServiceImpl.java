@@ -99,6 +99,23 @@ public class CustomerServiceImpl implements CustomerService {
         resultDto.setData(insert);
         return resultDto;
     }
+
+    @Override
+    public ResultDto deleteById(Integer id) {
+        int i = customerMapper.deleteByPrimaryKey(id);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(i);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto updateById(Customer customer) {
+        int i = customerMapper.updateByPrimaryKey(customer);
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(i);
+        return resultDto;
+    }
 }
 
 

@@ -1,5 +1,6 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.Role;
 
 public interface RoleService {
@@ -14,6 +15,10 @@ public interface RoleService {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    ResultDto selectAll(Integer pageIndex, Integer pageSize);
+
+    ResultDto addRole(Role role);
 }
 
 

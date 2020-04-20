@@ -2,13 +2,11 @@ package com.finearter.dbs.controller;
 
 
 import com.finearter.dbs.model.dto.ResultDto;
+import com.finearter.dbs.model.entity.User;
 import com.finearter.dbs.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author lwx
@@ -52,8 +50,16 @@ public class UserController {
      * @return
      */
     @GetMapping("/all")
-    public ResultDto selectAllUsers(){
+    public ResultDto selectAllUsers(Integer pageIndex,Integer pageSize){
 
-        return  userService.selectAllUsers();
+        return  userService.selectAllUsers(pageIndex,pageSize);
     }
+
+    @PutMapping("/addUser")
+    public ResultDto addUser(User user){
+        return userService.addUser(user);
+    }
+
+
+
 }

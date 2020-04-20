@@ -22,6 +22,10 @@ public interface CustomerService {
     int updateByPrimaryKey(Customer record);
 
     ResultDto addCustomer(Customer customer);
+
+    ResultDto deleteById(Integer id);
+
+    ResultDto updateById(Customer customer);
 }
 
 

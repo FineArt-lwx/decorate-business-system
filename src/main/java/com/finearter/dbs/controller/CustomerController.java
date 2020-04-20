@@ -4,9 +4,7 @@ import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.Customer;
 import com.finearter.dbs.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -40,13 +38,26 @@ public class CustomerController {
 
 
     /**
-     *
+     *新增客户
      * @param customer
      * @return
      */
     @GetMapping("addCustomer")
     public ResultDto addCustomer(Customer customer){
         return customerService.addCustomer(customer);
+    }
+
+
+
+    @DeleteMapping("deleteById")
+    public ResultDto deleteById(Integer id){
+        return customerService.deleteById(id);
+    }
+
+
+    @PutMapping("updateById")
+    public ResultDto updateById(Customer customer){
+        return customerService.updateById(customer);
     }
 
 }

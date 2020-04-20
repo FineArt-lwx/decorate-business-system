@@ -140,4 +140,18 @@
       float_date_declare = #{floatDateDeclare,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from project where 1=1
+      <if test="customerId != null">
+        and customer_id=#{customerId,jdbcType=INTEGER}
+      </if>
+      <if test="houseId != null">
+        and house_id=#{houseId}
+      </if>
+      <if test="principalId != null">
+        and principal_id=#{principalId}
+      </if>
+    </select>
 </mapper>

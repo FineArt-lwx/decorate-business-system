@@ -1,5 +1,6 @@
 package com.finearter.dbs.service;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.Project;
 public interface ProjectService{
 
@@ -16,4 +17,7 @@ public interface ProjectService{
 
     int updateByPrimaryKey(Project record);
 
+    ResultDto selectAll(Integer pageIndex, Integer pageSize);
+
+    ResultDto addProject(Project project);
 }

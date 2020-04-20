@@ -7,12 +7,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
-    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="principal_id" jdbcType="INTEGER" property="principalId" />
     <result column="partner_type" jdbcType="INTEGER" property="partnerType" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, phone_num, principal, partner_type
+    id, `name`, phone_num, principal_id, partner_type
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -28,9 +28,9 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.BusinessPartner" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into business_partner (`name`, phone_num, principal, 
+    insert into business_partner (`name`, phone_num, principal_id, 
       partner_type)
-    values (#{name,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
+    values (#{name,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{principalId,jdbcType=INTEGER}, 
       #{partnerType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.BusinessPartner" useGeneratedKeys="true">
@@ -43,8 +43,8 @@
       <if test="phoneNum != null">
         phone_num,
       </if>
-      <if test="principal != null">
-        principal,
+      <if test="principalId != null">
+        principal_id,
       </if>
       <if test="partnerType != null">
         partner_type,
@@ -57,8 +57,8 @@
       <if test="phoneNum != null">
         #{phoneNum,jdbcType=VARCHAR},
       </if>
-      <if test="principal != null">
-        #{principal,jdbcType=VARCHAR},
+      <if test="principalId != null">
+        #{principalId,jdbcType=INTEGER},
       </if>
       <if test="partnerType != null">
         #{partnerType,jdbcType=INTEGER},
@@ -75,8 +75,8 @@
       <if test="phoneNum != null">
         phone_num = #{phoneNum,jdbcType=VARCHAR},
       </if>
-      <if test="principal != null">
-        principal = #{principal,jdbcType=VARCHAR},
+      <if test="principalId != null">
+        principal_id = #{principalId,jdbcType=INTEGER},
       </if>
       <if test="partnerType != null">
         partner_type = #{partnerType,jdbcType=INTEGER},
@@ -89,8 +89,26 @@
     update business_partner
     set `name` = #{name,jdbcType=VARCHAR},
       phone_num = #{phoneNum,jdbcType=VARCHAR},
-      principal = #{principal,jdbcType=VARCHAR},
+      principal_id = #{principalId,jdbcType=INTEGER},
       partner_type = #{partnerType,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from business_partner where 1=1
+      <if test="phoneNum != null and phoneNum != ''">
+        and phoneNum=#{phoneNum,jdbcType=VARCHAR}
+      </if>
+      <if test="principalId != null">
+        and principal_id=#{principalId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null and name != ''">
+        and name like '%${name}%'
+      </if>
+      <if test="partnerType != null">
+        and partner_type=#{partnerType}
+      </if>
+
+    </select>
 </mapper>

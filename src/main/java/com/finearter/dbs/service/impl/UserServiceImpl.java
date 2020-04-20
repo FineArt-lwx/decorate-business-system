@@ -11,6 +11,8 @@ import com.finearter.dbs.model.entity.Job;
 import com.finearter.dbs.model.entity.Role;
 import com.finearter.dbs.model.entity.User;
 import com.finearter.dbs.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,15 +48,18 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public ResultDto selectAllUsers() {
+    public ResultDto selectAllUsers(Integer pageIndex,Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
         ArrayList<User> users = userMapper.selectByAnyCondition(new User());
         ArrayList<UserDto> userDtos=new ArrayList<>();
         for(User user:users){
             UserDto userDto = userConvertUserDto(user);
             userDtos.add(userDto);
         }
+
+        PageInfo pageInfo=new PageInfo(userDtos);
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(userDtos);
+        resultDto.setData(pageInfo);
         return  resultDto;
     }
 
@@ -126,6 +131,14 @@ public class UserServiceImpl implements UserService {
 
         ResultDto resultDto=new ResultDto();
         resultDto.setData(userDto);
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto addUser(User user) {
+        int insert = userMapper.insert(user);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(insert);
         return resultDto;
     }
 

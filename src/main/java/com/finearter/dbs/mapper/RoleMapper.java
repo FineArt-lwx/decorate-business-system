@@ -3,6 +3,8 @@ package com.finearter.dbs.mapper;
 import com.finearter.dbs.model.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
+
 @Mapper
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +18,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+
+    ArrayList<Role> selectByAnyCondition(Role role);
 }
