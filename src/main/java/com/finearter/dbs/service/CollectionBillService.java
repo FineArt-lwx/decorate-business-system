@@ -1,7 +1,8 @@
 package com.finearter.dbs.service;
 
 import com.finearter.dbs.model.entity.CollectionBill;
-public interface CollectionBillService{
+
+public interface CollectionBillService {
 
 
     int deleteByPrimaryKey(Integer id);
@@ -17,3 +18,4 @@ public interface CollectionBillService{
     int updateByPrimaryKey(CollectionBill record);
 
 }
+

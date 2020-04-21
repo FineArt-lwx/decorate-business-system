@@ -1,7 +1,8 @@
 package com.finearter.dbs.service;
 
 import com.finearter.dbs.model.entity.Order;
-public interface OrderService{
+
+public interface OrderService {
 
 
     int deleteByPrimaryKey(Integer id);
@@ -17,3 +18,4 @@ public interface OrderService{
     int updateByPrimaryKey(Order record);
 
 }
+

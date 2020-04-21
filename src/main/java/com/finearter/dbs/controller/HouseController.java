@@ -1,8 +1,10 @@
 package com.finearter.dbs.controller;
 
 import com.finearter.dbs.model.dto.ResultDto;
+import com.finearter.dbs.model.entity.House;
 import com.finearter.dbs.service.HouseService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +27,14 @@ public class HouseController {
 
 
     @GetMapping("/all")
-    public ResultDto selectAll(){
-        return houseService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize){
+        return houseService.selectAll(pageIndex,pageSize);
+    }
+
+
+    @PutMapping("addHouse")
+    public ResultDto addHouse(House house){
+        return houseService.addHouse(house);
     }
 
 

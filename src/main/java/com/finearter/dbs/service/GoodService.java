@@ -18,7 +18,7 @@ public interface GoodService {
 
     int updateByPrimaryKey(Good record);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
 }
 

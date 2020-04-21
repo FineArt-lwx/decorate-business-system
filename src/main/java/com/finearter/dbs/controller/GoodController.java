@@ -26,8 +26,8 @@ public class GoodController {
 
 
     @GetMapping("/all")
-    public ResultDto selectAll(){
-        return goodService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize){
+        return goodService.selectAll(pageIndex,pageSize);
     }
 
 

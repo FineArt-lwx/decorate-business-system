@@ -5,8 +5,9 @@ import javax.annotation.Resource;
 import com.finearter.dbs.mapper.CollectionBillMapper;
 import com.finearter.dbs.model.entity.CollectionBill;
 import com.finearter.dbs.service.CollectionBillService;
+
 @Service
-public class CollectionBillServiceImpl implements CollectionBillService{
+public class CollectionBillServiceImpl implements CollectionBillService {
 
     @Resource
     private CollectionBillMapper collectionBillMapper;
@@ -42,3 +43,4 @@ public class CollectionBillServiceImpl implements CollectionBillService{
     }
 
 }
+

@@ -5,8 +5,9 @@ import javax.annotation.Resource;
 import com.finearter.dbs.model.entity.Order;
 import com.finearter.dbs.mapper.OrderMapper;
 import com.finearter.dbs.service.OrderService;
+
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Resource
     private OrderMapper orderMapper;
@@ -42,3 +43,4 @@ public class OrderServiceImpl implements OrderService{
     }
 
 }
+

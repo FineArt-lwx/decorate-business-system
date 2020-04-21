@@ -100,6 +100,15 @@
       <if test="phoneNum != null and phoneNum != ''">
         and phoneNum=#{phoneNum,jdbcType=VARCHAR}
       </if>
+      <if test="principalId != null">
+        and principal_id=#{principalId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null and name != ''">
+        and name like '%${name}%'
+      </if>
+      <if test="partnerType != null">
+        and partner_type=#{partnerType}
+      </if>
 
     </select>
 </mapper>

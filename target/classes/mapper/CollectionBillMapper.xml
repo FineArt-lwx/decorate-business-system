@@ -6,16 +6,15 @@
     <!--@Table collectionBill-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" />
-    <result column="payee" jdbcType="VARCHAR" property="payee" />
     <result column="amount" jdbcType="DOUBLE" property="amount" />
     <result column="date" jdbcType="TIMESTAMP" property="date" />
     <result column="pay_way" jdbcType="VARCHAR" property="payWay" />
     <result column="pay_status" jdbcType="VARCHAR" property="payStatus" />
-    <result column="decorate_id" jdbcType="INTEGER" property="decorateId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, customer_id, payee, amount, `date`, pay_way, pay_status, decorate_id
+    id, customer_id, amount, `date`, pay_way, pay_status, order_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -31,12 +30,12 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.CollectionBill" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into collectionBill (customer_id, payee, amount, 
-      `date`, pay_way, pay_status, 
-      decorate_id)
-    values (#{customerId,jdbcType=INTEGER}, #{payee,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, 
-      #{date,jdbcType=TIMESTAMP}, #{payWay,jdbcType=VARCHAR}, #{payStatus,jdbcType=VARCHAR}, 
-      #{decorateId,jdbcType=INTEGER})
+    insert into collectionBill (customer_id, amount, `date`, 
+      pay_way, pay_status, order_id
+      )
+    values (#{customerId,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, #{date,jdbcType=TIMESTAMP}, 
+      #{payWay,jdbcType=VARCHAR}, #{payStatus,jdbcType=VARCHAR}, #{orderId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.finearter.dbs.model.entity.CollectionBill" useGeneratedKeys="true">
     <!--@mbg.generated-->
@@ -44,9 +43,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="customerId != null">
         customer_id,
-      </if>
-      <if test="payee != null">
-        payee,
       </if>
       <if test="amount != null">
         amount,
@@ -60,16 +56,13 @@
       <if test="payStatus != null">
         pay_status,
       </if>
-      <if test="decorateId != null">
-        decorate_id,
+      <if test="orderId != null">
+        order_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="customerId != null">
         #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="payee != null">
-        #{payee,jdbcType=VARCHAR},
       </if>
       <if test="amount != null">
         #{amount,jdbcType=DOUBLE},
@@ -83,8 +76,8 @@
       <if test="payStatus != null">
         #{payStatus,jdbcType=VARCHAR},
       </if>
-      <if test="decorateId != null">
-        #{decorateId,jdbcType=INTEGER},
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -94,9 +87,6 @@
     <set>
       <if test="customerId != null">
         customer_id = #{customerId,jdbcType=INTEGER},
-      </if>
-      <if test="payee != null">
-        payee = #{payee,jdbcType=VARCHAR},
       </if>
       <if test="amount != null">
         amount = #{amount,jdbcType=DOUBLE},
@@ -110,8 +100,8 @@
       <if test="payStatus != null">
         pay_status = #{payStatus,jdbcType=VARCHAR},
       </if>
-      <if test="decorateId != null">
-        decorate_id = #{decorateId,jdbcType=INTEGER},
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -120,12 +110,11 @@
     <!--@mbg.generated-->
     update collectionBill
     set customer_id = #{customerId,jdbcType=INTEGER},
-      payee = #{payee,jdbcType=VARCHAR},
       amount = #{amount,jdbcType=DOUBLE},
       `date` = #{date,jdbcType=TIMESTAMP},
       pay_way = #{payWay,jdbcType=VARCHAR},
       pay_status = #{payStatus,jdbcType=VARCHAR},
-      decorate_id = #{decorateId,jdbcType=INTEGER}
+      order_id = #{orderId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

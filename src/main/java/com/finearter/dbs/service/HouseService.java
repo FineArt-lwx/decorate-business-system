@@ -17,5 +17,7 @@ public interface HouseService{
 
     int updateByPrimaryKey(House record);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
+
+    ResultDto addHouse(House house);
 }
