@@ -7,7 +7,7 @@ public interface CustomerService {
 
     ResultDto selectByName(String customerName);
 
-    ResultDto selectAll();
+    ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
     int deleteByPrimaryKey(Integer id);
 

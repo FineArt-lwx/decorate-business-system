@@ -32,8 +32,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/selectAll")
-    public ResultDto selectAll(){
-        return customerService.selectAll();
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize){
+        return customerService.selectAll(pageIndex,pageSize);
     }
 
 

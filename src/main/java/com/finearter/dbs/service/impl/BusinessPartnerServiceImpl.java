@@ -61,7 +61,6 @@ public class BusinessPartnerServiceImpl implements BusinessPartnerService {
     @Override
     public ResultDto selectAll(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
-
         ArrayList<BusinessPartner> businessPartnerArrayList = businessPartnerMapper.selectByAnyCondition(new BusinessPartner());
 
         ArrayList<BusinessPartnerVo> businessPartnerVos=new ArrayList<>();

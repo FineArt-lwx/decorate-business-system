@@ -8,6 +8,8 @@ import com.finearter.dbs.model.entity.Customer;
 import com.finearter.dbs.model.entity.User;
 import com.finearter.dbs.model.vo.CustomerVo;
 import com.finearter.dbs.service.CustomerService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,14 +42,23 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public ResultDto selectAll() {
+    public ResultDto selectAll(Integer pageIndex,Integer pageSize) {
+
+        PageHelper.startPage(pageIndex,pageSize);
         ArrayList<Customer> customers=customerMapper.selectByAnyCondition(new Customer());
 
-        Customer customer=null;
-        CustomerVo customerVo=customerConvertCustomerVo(customer);
+        ArrayList<CustomerVo> customerVos=new ArrayList<>();
 
+        for(Customer customer:customers){
+            CustomerVo customerVo=customerConvertCustomerVo(customer);
+            customerVos.add(customerVo);
+
+        }
+
+
+        PageInfo pageInfo=new PageInfo(customerVos);
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(customers);
+        resultDto.setData(pageInfo);
         return resultDto;
     }
 
