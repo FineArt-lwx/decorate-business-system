@@ -25,13 +25,13 @@ public class RoleController {
     private RoleService roleService;
 
     @GetMapping("/all")
-    private ResultDto all(Integer pageIndex,Integer pageSize){
+    public ResultDto all(Integer pageIndex,Integer pageSize){
         return roleService.selectAll(pageIndex,pageSize);
     }
 
 
     @GetMapping("/addRole")
-    private ResultDto addRole(Role role){
+    public ResultDto addRole(Role role){
         return roleService.addRole(role);
 
     }

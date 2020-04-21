@@ -68,7 +68,8 @@ public class BusinessPartnerServiceImpl implements BusinessPartnerService {
             BusinessPartnerVo businessPartnerVo=businessPartnerConvertBusinessPartnerVo(businessPartner);
             businessPartnerVos.add(businessPartnerVo);
         }
-        PageInfo pageInfo=new PageInfo(businessPartnerVos);
+        PageInfo pageInfo=new PageInfo(businessPartnerArrayList);
+        pageInfo.setList(businessPartnerVos);
         ResultDto resultDto=new ResultDto();
         resultDto.setData(pageInfo);
         return resultDto;

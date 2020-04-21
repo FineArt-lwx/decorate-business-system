@@ -57,7 +57,9 @@ public class UserServiceImpl implements UserService {
             userDtos.add(userDto);
         }
 
-        PageInfo pageInfo=new PageInfo(userDtos);
+        PageInfo pageInfo=new PageInfo(users);
+        pageInfo.setList(userDtos);
+
         ResultDto resultDto=new ResultDto();
         resultDto.setData(pageInfo);
         return  resultDto;
