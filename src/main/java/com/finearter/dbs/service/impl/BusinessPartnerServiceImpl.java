@@ -10,6 +10,7 @@ import com.finearter.dbs.model.entity.GoodBusinessPartnerMapping;
 import com.finearter.dbs.model.vo.BusinessPartnerVo;
 import com.finearter.dbs.service.BusinessPartnerService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -68,8 +69,9 @@ public class BusinessPartnerServiceImpl implements BusinessPartnerService {
             BusinessPartnerVo businessPartnerVo=businessPartnerConvertBusinessPartnerVo(businessPartner);
             businessPartnerVos.add(businessPartnerVo);
         }
+        PageInfo pageInfo=new PageInfo(businessPartnerVos);
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(businessPartnerVos);
+        resultDto.setData(pageInfo);
         return resultDto;
     }
 
