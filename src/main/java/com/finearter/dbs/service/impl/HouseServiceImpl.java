@@ -8,6 +8,7 @@ import com.finearter.dbs.model.entity.House;
 import com.finearter.dbs.model.vo.HouseVo;
 import com.finearter.dbs.service.HouseService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -63,8 +64,10 @@ public class HouseServiceImpl implements HouseService{
             HouseVo houseVo=houseConvertHouseVo(house);
             houseVos.add(houseVo);
         }
+        PageInfo pageInfo=new PageInfo();
+        pageInfo.setList(houseVos);
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(houseVos);
+        resultDto.setData(pageInfo);
         return resultDto;
     }
 
