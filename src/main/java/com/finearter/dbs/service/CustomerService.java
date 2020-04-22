@@ -5,7 +5,7 @@ import com.finearter.dbs.model.dto.ResultDto;import com.finearter.dbs.model.enti
 public interface CustomerService {
 
 
-    ResultDto selectByName(String customerName);
+    ResultDto selectByName(String customerName,Integer pageIndex,Integer pageSize);
 
     ResultDto selectAll(Integer pageIndex,Integer pageSize);
 

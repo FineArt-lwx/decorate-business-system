@@ -22,8 +22,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/selectByName")
-    public ResultDto selectByName(String customerName){
-        return customerService.selectByName(customerName);
+    public ResultDto selectByName(String customerName,Integer pageIndex,Integer pageSize){
+        return customerService.selectByName(customerName,pageIndex,pageSize);
     }
 
 

@@ -27,15 +27,24 @@ public class CustomerServiceImpl implements CustomerService {
     private UserMapper userMapper;
 
     @Override
-    public ResultDto selectByName(String customerName) {
+    public ResultDto selectByName(String customerName,Integer pageIndex,Integer pageSize) {
 
 //        ArrayList<Customer> customers = customerMapper.selectByName(customerName);
 
-        Customer customer=new Customer();
-        customer.setCustomerName(customerName);
-        ArrayList<Customer> customers = customerMapper.selectByAnyCondition(customer);
+
+        Customer condition=new Customer();
+        condition.setCustomerName(customerName);
+        PageHelper.startPage(pageIndex,pageSize);
+        ArrayList<Customer> customers = customerMapper.selectByAnyCondition(condition);
+        ArrayList<CustomerVo> customerVos=new ArrayList<>();
+        for(Customer customer:customers){
+            CustomerVo customerVo = customerConvertCustomerVo(customer);
+            customerVos.add(customerVo);
+        }
+        PageInfo pageInfo=new PageInfo(customers);
+        pageInfo.setList(customerVos);
         ResultDto resultDto = new ResultDto();
-        resultDto.setData(customers);
+        resultDto.setData(pageInfo);
 //        resultDto.setData(customers);
 
         return resultDto;
@@ -56,7 +65,8 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
 
-        PageInfo pageInfo=new PageInfo(customerVos);
+        PageInfo pageInfo=new PageInfo(customers);
+        pageInfo.setList(customerVos);
         ResultDto resultDto=new ResultDto();
         resultDto.setData(pageInfo);
         return resultDto;
@@ -67,8 +77,13 @@ public class CustomerServiceImpl implements CustomerService {
         User user = userMapper.selectByPrimaryKey(customer.getEmployeeId());
         customerVo.setUser(user);
 
+        customerVo.setCustomerName(customer.getCustomerName());
+        customerVo.setCustomerIdNum(customer.getCustomerIdNum());
+        customerVo.setCustomerSex(customer.getCustomerSex());
+        customerVo.setId(customer.getId());
+        customerVo.setPhoneNum(customer.getPhoneNum());
         customerVo.setCustomerAddress(customer.getCustomerAddress());
-        return null;
+        return customerVo;
     }
 
 
