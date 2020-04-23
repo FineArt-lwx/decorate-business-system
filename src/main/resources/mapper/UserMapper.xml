@@ -216,6 +216,12 @@
         <if test="password != null and password != ''">
             and password=#{password}
         </if>
+        <if test="id != null">
+            and id=#{id}
+        </if>
+        <if test="idNumber != null and idNumber != ''">
+            and id_number=#{idNumber}
+        </if>
 
     </select>
 

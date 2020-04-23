@@ -30,6 +30,13 @@ public interface UserService {
     ResultDto info(String phoneNum);
 
     ResultDto addUser(User user);
+
+    ResultDto checkIdentity(Integer id, String idNumber, String phoneNum);
+
+    ResultDto checkPassword(Integer id, String password);
+
+    ResultDto updatePassword(Integer id, String password);
+
 }
 
 

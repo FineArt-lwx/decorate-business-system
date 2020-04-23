@@ -145,6 +145,62 @@ public class UserServiceImpl implements UserService {
         return resultDto;
     }
 
+    @Override
+    public ResultDto checkIdentity(Integer id, String idNumber, String phoneNum) {
+
+        User condition =new User();
+        condition.setId(id);
+        condition.setIdNumber(idNumber);
+        condition.setPhoneNum(phoneNum);
+
+        ArrayList<User> users = userMapper.selectByAnyCondition(condition);
+        ResultDto resultDto=new ResultDto();
+        if(users.size()!=0){
+            User user=users.get(0);
+            resultDto.setData(user);
+        }
+        else {
+            resultDto.setMessage("验证信息错误");
+        }
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto checkPassword(Integer id, String password) {
+        User condition =new User();
+        condition.setId(id);
+        condition.setPassword(password);
+        ArrayList<User> users = userMapper.selectByAnyCondition(condition);
+
+        ResultDto resultDto=new ResultDto();
+        if(users.size()!=0){
+            User user=users.get(0);
+            resultDto.setData(user);
+        }else{
+            resultDto.setMessage("原密码错误");
+        }
+
+
+        return resultDto;
+    }
+
+    @Override
+    public ResultDto updatePassword(Integer id, String password) {
+
+
+        User user = userMapper.selectByPrimaryKey(id);
+        user.setPassword(password);
+
+        int i = userMapper.updateByPrimaryKey(user);
+
+        ResultDto resultDto=new ResultDto();
+
+        resultDto.setMessage("修改成功");
+        resultDto.setData(i);
+
+        return resultDto;
+    }
+
     private UserDto userConvertUserDto(User userResult) {
 
         UserDto userDto=new UserDto();

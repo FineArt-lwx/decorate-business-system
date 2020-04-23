@@ -62,4 +62,27 @@ public class UserController {
 
 
 
+
+    @PostMapping("checkIdentity")
+    public ResultDto checkIdentity(Integer id,String idNumber,String phoneNum){
+        return userService.checkIdentity(id,idNumber,phoneNum);
+    }
+
+
+    @PostMapping("checkPassword")
+    public ResultDto checkPassword(Integer id,String password){
+        return userService.checkPassword(id,password);
+    }
+
+
+    @PostMapping("updatePassword")
+    public ResultDto updatePassword(Integer id,String password){
+        return userService.updatePassword(id,password);
+    }
+
+
+
+
+
+
 }
