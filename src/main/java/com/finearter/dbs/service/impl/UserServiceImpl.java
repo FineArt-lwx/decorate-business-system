@@ -102,6 +102,7 @@ public class UserServiceImpl implements UserService {
         ResultDto resultDto=new ResultDto();
         User user=new User();
         user.setPhoneNum(phoneNum);
+        user.setPassword(password);
         ArrayList<User> users=userMapper.selectByAnyCondition(user);
         if(users.size()==0){
             resultDto.setMessage("操作成功，但是密码错误");
