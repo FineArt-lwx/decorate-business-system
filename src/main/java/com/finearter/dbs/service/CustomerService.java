@@ -26,6 +26,8 @@ public interface CustomerService {
     ResultDto deleteById(Integer id);
 
     ResultDto updateById(Customer customer);
+
+    ResultDto selectById(Integer id);
 }
 
 

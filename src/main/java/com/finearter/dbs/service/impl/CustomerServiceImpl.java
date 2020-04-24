@@ -142,6 +142,16 @@ public class CustomerServiceImpl implements CustomerService {
         resultDto.setData(i);
         return resultDto;
     }
+
+    @Override
+    public ResultDto selectById(Integer id) {
+
+        Customer customer = customerMapper.selectByPrimaryKey(id);
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(customer);
+        return resultDto;
+    }
 }
 
 

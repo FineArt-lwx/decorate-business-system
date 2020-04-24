@@ -79,6 +79,14 @@ public class HouseServiceImpl implements HouseService{
         return resultDto;
     }
 
+    @Override
+    public ResultDto selectById(Integer id) {
+        Customer customer = customerMapper.selectByPrimaryKey(id);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(customer);
+        return resultDto;
+    }
+
     private HouseVo houseConvertHouseVo(House house) {
 
         HouseVo houseVo = new HouseVo();

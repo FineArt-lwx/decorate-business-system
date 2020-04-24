@@ -20,4 +20,6 @@ public interface HouseService{
     ResultDto selectAll(Integer pageIndex,Integer pageSize);
 
     ResultDto addHouse(House house);
+
+    ResultDto selectById(Integer id);
 }

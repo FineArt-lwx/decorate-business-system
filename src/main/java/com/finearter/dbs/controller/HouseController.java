@@ -38,4 +38,10 @@ public class HouseController {
     }
 
 
+    @GetMapping("selectById")
+    public ResultDto selectById(Integer id){
+        return houseService.selectById(id);
+    }
+
+
 }

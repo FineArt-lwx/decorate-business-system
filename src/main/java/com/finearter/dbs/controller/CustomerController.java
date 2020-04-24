@@ -60,4 +60,10 @@ public class CustomerController {
         return customerService.updateById(customer);
     }
 
+
+    @GetMapping("selectById")
+    public ResultDto selectById(Integer id){
+        return customerService.selectById(id);
+    }
+
 }
