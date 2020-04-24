@@ -64,7 +64,7 @@ public class HouseServiceImpl implements HouseService{
             HouseVo houseVo=houseConvertHouseVo(house);
             houseVos.add(houseVo);
         }
-        PageInfo pageInfo=new PageInfo();
+        PageInfo pageInfo=new PageInfo(houses);
         pageInfo.setList(houseVos);
         ResultDto resultDto=new ResultDto();
         resultDto.setData(pageInfo);
@@ -81,9 +81,11 @@ public class HouseServiceImpl implements HouseService{
 
     @Override
     public ResultDto selectById(Integer id) {
-        Customer customer = customerMapper.selectByPrimaryKey(id);
+        House house = houseMapper.selectByPrimaryKey(id);
+        HouseVo houseVo = houseConvertHouseVo(house);
+
         ResultDto resultDto=new ResultDto();
-        resultDto.setData(customer);
+        resultDto.setData(houseVo);
         return resultDto;
     }
 
