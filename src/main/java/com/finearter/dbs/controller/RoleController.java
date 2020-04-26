@@ -29,7 +29,11 @@ public class RoleController {
         return roleService.selectAll(pageIndex,pageSize);
     }
 
-
+    /**
+     * 添加角色
+     * @param role
+     * @return
+     */
     @GetMapping("/addRole")
     public ResultDto addRole(Role role){
         return roleService.addRole(role);

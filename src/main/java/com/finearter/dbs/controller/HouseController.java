@@ -44,4 +44,10 @@ public class HouseController {
     }
 
 
+    @GetMapping("selectByCondition")
+    public ResultDto selectByAnyCondition(House house,Integer pageIndex,Integer pageSize){
+        return houseService.selectByAnyCondition(house,pageIndex,pageSize);
+    }
+
+
 }

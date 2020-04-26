@@ -58,6 +58,12 @@ public class BusinessPartnerServiceImpl implements BusinessPartnerService {
         return businessPartnerMapper.updateByPrimaryKey(record);
     }
 
+    /**
+     * 查询所有的合作商列表
+     * @param pageIndex
+     * @param pageSize
+     * @return
+     */
     @Override
     public ResultDto selectAll(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex, pageSize);

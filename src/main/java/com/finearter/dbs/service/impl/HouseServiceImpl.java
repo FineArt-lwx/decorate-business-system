@@ -89,6 +89,26 @@ public class HouseServiceImpl implements HouseService{
         return resultDto;
     }
 
+    @Override
+    public ResultDto selectByAnyCondition(House house, Integer pageIndex,Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        ArrayList<House> houses = houseMapper.selectByAnyCondition(house);
+        ArrayList<HouseVo> houseVos=new ArrayList<>();
+        for(House houseTemp:houses){
+            HouseVo houseVo = houseConvertHouseVo(houseTemp);
+            houseVos.add(houseVo);
+        }
+
+        PageInfo pageInfo=new PageInfo(houses);
+        pageInfo.setList(houseVos);
+
+        ResultDto resultDto=new ResultDto();
+
+        resultDto.setData(pageInfo);
+
+        return resultDto;
+    }
+
     private HouseVo houseConvertHouseVo(House house) {
 
         HouseVo houseVo = new HouseVo();
@@ -107,6 +127,10 @@ public class HouseServiceImpl implements HouseService{
         return houseVo;
 
     }
+
+
+
+
 
 
 }

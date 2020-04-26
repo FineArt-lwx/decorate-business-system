@@ -90,6 +90,11 @@ public class ProjectServiceImpl implements ProjectService {
         return resultDto;
     }
 
+    /**
+     * 新建工程核心代码
+     * @param project
+     * @return
+     */
     @Override
     public ResultDto addProject(Project project) {
         int insert = projectMapper.insert(project);

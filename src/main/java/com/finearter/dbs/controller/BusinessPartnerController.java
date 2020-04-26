@@ -24,7 +24,12 @@ public class BusinessPartnerController {
     private BusinessPartnerService businessPartnerService;
 
 
-
+    /**
+     * 合作商管理列表
+     * @param pageIndex
+     * @param pageSize
+     * @return
+     */
     @GetMapping("/all")
     public ResultDto all(Integer pageIndex,Integer pageSize){
         return businessPartnerService.selectAll(pageIndex,pageSize);

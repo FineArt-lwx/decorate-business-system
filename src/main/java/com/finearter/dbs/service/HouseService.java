@@ -22,4 +22,6 @@ public interface HouseService{
     ResultDto addHouse(House house);
 
     ResultDto selectById(Integer id);
+
+    ResultDto selectByAnyCondition(House house,Integer pageIndex,Integer pageSize);
 }

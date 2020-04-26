@@ -38,7 +38,11 @@ public class ProjectController {
 
     }
 
-
+    /**
+     * 新建工程
+     * @param project
+     * @return
+     */
     @PutMapping("/addProject")
     public ResultDto addProject(Project project){
         return projectService.addProject(project);

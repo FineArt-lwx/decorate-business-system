@@ -137,6 +137,11 @@ public class UserServiceImpl implements UserService {
         return resultDto;
     }
 
+    /**
+     * 添加用户核心代码
+     * @param user
+     * @return
+     */
     @Override
     public ResultDto addUser(User user) {
         int insert = userMapper.insert(user);
@@ -145,6 +150,13 @@ public class UserServiceImpl implements UserService {
         return resultDto;
     }
 
+    /**
+     * 修改密码第一步：验证身份核心代码
+     * @param id
+     * @param idNumber
+     * @param phoneNum
+     * @return
+     */
     @Override
     public ResultDto checkIdentity(Integer id, String idNumber, String phoneNum) {
 
@@ -165,6 +177,12 @@ public class UserServiceImpl implements UserService {
         return resultDto;
     }
 
+    /**
+     * 修改密码第二步：验证原密码核心代码
+     * @param id
+     * @param password
+     * @return
+     */
     @Override
     public ResultDto checkPassword(Integer id, String password) {
         User condition =new User();
@@ -183,7 +201,12 @@ public class UserServiceImpl implements UserService {
 
         return resultDto;
     }
-
+    /**
+     * 修改密码第三步：修改密码核心代码
+     * @param id
+     * @param password
+     * @return
+     */
     @Override
     public ResultDto updatePassword(Integer id, String password) {
 

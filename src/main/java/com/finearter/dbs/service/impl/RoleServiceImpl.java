@@ -57,6 +57,11 @@ public class RoleServiceImpl implements RoleService {
         return resultDto;
     }
 
+    /**
+     * 添加角色核心代码
+     * @param role
+     * @return
+     */
     @Override
     public ResultDto addRole(Role role) {
         int insert = roleMapper.insert(role);

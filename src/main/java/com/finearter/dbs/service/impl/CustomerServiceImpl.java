@@ -117,6 +117,11 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.updateByPrimaryKey(record);
     }
 
+    /**
+     * 新增客户信息核心代码
+     * @param customer
+     * @return
+     */
     @Override
     public ResultDto addCustomer(Customer customer) {
 
@@ -152,6 +157,9 @@ public class CustomerServiceImpl implements CustomerService {
         resultDto.setData(customer);
         return resultDto;
     }
+
+
+
 }
 
 
