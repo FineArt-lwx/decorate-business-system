@@ -50,4 +50,10 @@ public class HouseController {
     }
 
 
+
+    @PutMapping("updateById")
+    public ResultDto updateById(House house){
+        return houseService.updateById(house);
+    }
+
 }

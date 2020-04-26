@@ -98,6 +98,13 @@ public class UserController {
 
 
 
+    @PostMapping("updateById")
+    public ResultDto updateById(User user){
+        return  userService.updateById(user);
+    }
+
+
+
 
 
 

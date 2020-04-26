@@ -1,10 +1,15 @@
 package com.finearter.dbs.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import com.finearter.dbs.mapper.DecoratePlanMapper;
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.DecoratePlan;
 import com.finearter.dbs.service.DecoratePlanService;
+import com.github.pagehelper.PageHelper;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+
 @Service
 public class DecoratePlanServiceImpl implements DecoratePlanService{
 
@@ -39,6 +44,15 @@ public class DecoratePlanServiceImpl implements DecoratePlanService{
     @Override
     public int updateByPrimaryKey(DecoratePlan record) {
         return decoratePlanMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public ResultDto all(Integer pageIndex, Integer pageSize) {
+
+        PageHelper.startPage(pageIndex,pageSize);
+        ArrayList<DecoratePlan> decoratePlans=decoratePlanMapper.selectByAnyCondition(new DecoratePlan());
+
+        return null;
     }
 
 }

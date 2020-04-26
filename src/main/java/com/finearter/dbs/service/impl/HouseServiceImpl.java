@@ -109,6 +109,15 @@ public class HouseServiceImpl implements HouseService{
         return resultDto;
     }
 
+    @Override
+    public ResultDto updateById(House house) {
+
+        int i = houseMapper.updateByPrimaryKey(house);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(i);
+        return resultDto;
+    }
+
     private HouseVo houseConvertHouseVo(House house) {
 
         HouseVo houseVo = new HouseVo();

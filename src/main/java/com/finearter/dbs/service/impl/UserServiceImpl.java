@@ -224,6 +224,17 @@ public class UserServiceImpl implements UserService {
         return resultDto;
     }
 
+    @Override
+    public ResultDto updateById(User user) {
+
+        int i = userMapper.updateByPrimaryKeySelective(user);
+
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(i);
+
+        return resultDto;
+    }
+
     private UserDto userConvertUserDto(User userResult) {
 
         UserDto userDto=new UserDto();

@@ -1,6 +1,9 @@
 package com.finearter.dbs.controller;
 
+import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.service.DecoratePlanService;
+import io.swagger.models.auth.In;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +23,12 @@ public class DecoratePlanController {
      */
     @Resource
     private DecoratePlanService decoratePlanService;
+
+
+    @GetMapping("all")
+    public ResultDto all(Integer pageIndex,Integer pageSize){
+        return decoratePlanService.all(pageIndex,pageIndex);
+    }
 
 
 }

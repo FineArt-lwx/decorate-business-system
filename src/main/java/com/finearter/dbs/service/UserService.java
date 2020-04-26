@@ -37,6 +37,7 @@ public interface UserService {
 
     ResultDto updatePassword(Integer id, String password);
 
+    ResultDto updateById(User user);
 }
 
 
