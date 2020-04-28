@@ -82,4 +82,15 @@
       price = #{price,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectByAnyCondition" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from decorate_plan where 1=1
+      <if test="name != null and name != ''">
+        and name like '%${name}%'
+      </if>
+      <if test="price">
+        and price=#{price}
+      </if>
+    </select>
 </mapper>

@@ -5,6 +5,7 @@ import com.finearter.dbs.model.dto.ResultDto;
 import com.finearter.dbs.model.entity.DecoratePlan;
 import com.finearter.dbs.service.DecoratePlanService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -52,7 +53,12 @@ public class DecoratePlanServiceImpl implements DecoratePlanService{
         PageHelper.startPage(pageIndex,pageSize);
         ArrayList<DecoratePlan> decoratePlans=decoratePlanMapper.selectByAnyCondition(new DecoratePlan());
 
-        return null;
+        PageInfo pageInfo=new PageInfo(decoratePlans);
+        ResultDto resultDto=new ResultDto();
+        resultDto.setData(pageInfo);
+
+
+        return resultDto;
     }
 
 }
