@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 
 @Service
-public class DecoratePlanServiceImpl implements DecoratePlanService{
+public class DecoratePlanServiceImpl implements DecoratePlanService {
 
     @Resource
     private DecoratePlanMapper decoratePlanMapper;
@@ -50,11 +50,11 @@ public class DecoratePlanServiceImpl implements DecoratePlanService{
     @Override
     public ResultDto all(Integer pageIndex, Integer pageSize) {
 
-        PageHelper.startPage(pageIndex,pageSize);
-        ArrayList<DecoratePlan> decoratePlans=decoratePlanMapper.selectByAnyCondition(new DecoratePlan());
+        PageHelper.startPage(pageIndex, pageSize);
+        ArrayList<DecoratePlan> decoratePlans = decoratePlanMapper.selectByAnyCondition(new DecoratePlan());
 
-        PageInfo pageInfo=new PageInfo(decoratePlans);
-        ResultDto resultDto=new ResultDto();
+        PageInfo pageInfo = new PageInfo(decoratePlans);
+        ResultDto resultDto = new ResultDto();
         resultDto.setData(pageInfo);
 
 
@@ -62,3 +62,4 @@ public class DecoratePlanServiceImpl implements DecoratePlanService{
     }
 
 }
+
